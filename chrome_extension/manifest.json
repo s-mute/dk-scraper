@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "DK Scraper",
+  "version": "1.0",
+  "description": "Scraper for DK — downloads canvas pages as numbered PNGs",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "DK Scraper"
+  }
+}
