@@ -5,7 +5,7 @@ Downloads pages from Digitální Knihovna as numbered PNG files. Available as a 
   
 Note: Digitální Knihovna servers can be slow or unresponsive, and your login session may drop mid-run. If the scraper stalls or stops, just restart it from the last successfully downloaded page.                                                                                                        
 
-Output: Individual PNG files (page_0001.png, …). To combine them into a PDF, use an online tool or — TODO: Create a merge script.                                                                                                                                                                            
+Output: Individual PNG files (`page_0001.png`, ...). To combine them into a PDF, use `merge_pngs_to_pdf.py`.
 
 ---
 
@@ -28,6 +28,39 @@ Output: Individual PNG files (page_0001.png, …). To combine them into a PDF, u
 The popup shows live status (`Running — page N…`) and updates automatically when the run finishes.
 
 **Double-page spreads** are saved as two files per spread: `page_0001_a.png` and `page_0001_b.png`. Therefore page number you choose should represent numbered page of the last file you downloaded.
+
+---
+
+## Merge PNGs into PDF
+
+The helper script `merge_pngs_to_pdf.py` merges downloaded `page_*.png` files into one PDF.
+
+Install the Python dependency once:
+
+```bash
+python3 -m pip install Pillow
+```
+
+From the folder containing the downloaded PNG files, run:
+
+```bash
+python3 /path/to/digitalni\ knihovna\ scraper/merge_pngs_to_pdf.py -o output.pdf
+```
+
+By default, the script removes empty scanner background around each page. This is useful for double-page spread files such as `page_0001_a.png` and `page_0001_b.png`, where one side can contain only empty black/white background.
+
+Additional crop modes:
+
+```bash
+# exact 50% split: a keeps the left half, b keeps the right half
+python3 /path/to/digitalni\ knihovna\ scraper/merge_pngs_to_pdf.py --crop-mode half -o output.pdf
+
+# no cropping
+python3 /path/to/digitalni\ knihovna\ scraper/merge_pngs_to_pdf.py --crop-mode none -o output.pdf
+
+# keep more border around detected content
+python3 /path/to/digitalni\ knihovna\ scraper/merge_pngs_to_pdf.py --margin 30 -o output.pdf
+```
 
 ---
 
