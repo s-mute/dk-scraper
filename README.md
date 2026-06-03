@@ -62,6 +62,8 @@ python3 /path/to/digitalni\ knihovna\ scraper/merge_pngs_to_pdf.py --crop-mode n
 python3 /path/to/digitalni\ knihovna\ scraper/merge_pngs_to_pdf.py --margin 30 -o output.pdf
 ```
 
+This python script is AI generated, so if there's something wrong, let me know.
+
 ---
 
 ## Console Script (legacy version)
